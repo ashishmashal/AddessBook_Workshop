@@ -127,3 +127,10 @@ const resetForm = () => {
     setValue('#state', '');
     setValue('#zipcode', '');
 }
+
+// const createNewAddId = () => {
+//     let addrId = localStorage.getItem('AddressBookID');
+//     addrId = !addrId ? 1 : (parseInt(addrId) + 1);
+//     localStorage.setItem('AddressBookID', addrId);
+//     return addrId;
+// }
