@@ -101,6 +101,7 @@ body {
     float: right;
     width: auto;
     margin-right: 2%;
+    border-radius: 15px;
    
 }
 
@@ -176,23 +177,6 @@ error-output {
     font-family: Roboto;
 }
 
-.profie-radio-content {
-    display: flex;
-    flex-direction: row;
-}
-
-.profile-radio-content>label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.profile {
-    width: 40px;
-    border-radius: 50%;
-    margin-left: 12px;
-}
-
 select {
     padding: 12px;
     border: 1px solid#ccc;
@@ -206,4 +190,41 @@ select {
     margin-right: 40px;
     width: 100%;
     margin-bottom: 30px;
+}
+
+.add-reset {
+    width: 104%;
+    height: 10vh;
+    background: #ffffff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 0px 0px 0px;
+}
+
+button {
+    width: 300px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #D3D3D3;
+    color: #384135;
+    font-size: 16px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin: auto;
+}
+
+button:hover {
+    color: #3179fd;
+    border: #3179fd solid 1px;
+    background: #fff;
+}
+
+.addButton,
+.resetButton {
+    margin-right: 5%;
 }

@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     Address();
     Zipcode();
 });
+
 function validateName() {
     const name = document.querySelector('#name');
     const textError = document.querySelector('.text-error');
@@ -71,4 +72,58 @@ function Zipcode() {
             zipcodeError.textContent = e;
         }
     });
+}
+
+const save = () => {
+    try {
+        let addressBookData = createAddressBook();
+        //alert("Added Sucedssfully");
+        alert(addressBookData.toString());
+    } catch (e) {
+        return;
+    }
+}
+
+const createAddressBook = () => {
+    let addressBookData = new AddressBook();
+
+    try {
+        addressBookData.name = getInputValueById('#name');
+    } catch (e) {
+        setTextValue('.text-error', e);
+        throw e;
+    }
+    addressBookData.phone = getInputValueById('#phone');
+    addressBookData.address = getInputValueById('#address');
+    addressBookData.city= getInputValueById('#city');
+    addressBookData.state= getInputValueById('#state');
+    addressBookData.name = getInputValueById('#zipcode');
+    return addressBookData;
+}
+const getSelectedValues = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue);
+    let selItems = [];
+    allItems.forEach(item => {
+        if (item.checked) selItems.push(item.value);
+    });
+    return selItems;
+}
+
+const getInputValueById = (id) => {
+    let value = document.querySelector(id).value;
+    return value;
+}
+
+const getInputElementValue = (id) => {
+    let value = document.getElementById(id).value;
+    return value;
+}
+
+const resetForm = () => {
+    setValue('#name', '');
+    setValue('#phone','');
+    setValue('#address', '');
+    setValue('#city', '');
+    setValue('#state', '');
+    setValue('#zipcode', '');
 }

@@ -15,6 +15,18 @@ class AddressBook{
         if(!nameRegex.test(name))
         throw "Name Is Incorrect!"
     }
+    get city() {
+        return this._city;
+    }
+    set city(city) {
+        this._city = city;
+    }
+    get state() {
+        return this._state;
+    }
+    set state(state) {
+        this._state = state;
+    }
     get PhoneNo() {
         return this._phone;
     }
@@ -38,5 +50,10 @@ class AddressBook{
         let ziprgx=RegExp('^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$')
         if(!ziprgx.test(zipcode))
         throw "Zip Code Is Incorrect!";
+    }
+    toString() {
+            return "name=" + this.name + ", Phone No=" + this.phone +
+            ", Address=" + this.address + ", Zip Code=" + this.zipcode +
+            ", City=" + this.city + ", State=" +this.state;
     }
 }
