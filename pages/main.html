@@ -10,15 +10,29 @@
 </head>
 
 <body>
+    <!-- UC1 Create the page header for home page-->
     <header class="header-content header">
         <div class="logo-content">
-            <img src="/assest/images/logo.png" alt="">
+            <a href="./AddressBook.html"></a>
+            <img src="/assest/images/logo.png" alt="logo">
             <div>
-                <span class="adr-text">ADDRESS</span><br>
-                <span class="adr-text addr-book">BOOK</span>
+                <span class="book-text">ADDRESS</span><br>
+                <span class="book-text add-book">BOOK</span>
             </div>
         </div>
     </header>
+
+    <div class="form-content">
+        <form class="form" action="#" onsubmit="save(event); false" onreset="reset()">
+            <div class="form-head">
+                <span class="form-head-text">PERSON ADDRESS FORM</span>
+                <span class="cross-icon">
+                    <img src="/assest/images/cross.png" class="close-circle" name="close-circle" onclick="cancel();">
+                    </ion-icon>
+                </span>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
