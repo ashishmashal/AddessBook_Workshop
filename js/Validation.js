@@ -1,8 +1,12 @@
+let isUpdate = false;
+let AdderessObj = {};
+
 window.addEventListener('DOMContentLoaded', (event) => {
     validateName();
     Phonenumber();
     Address();
     Zipcode();
+    checkForUpdate();
 });
 
 function validateName() {
@@ -136,4 +140,34 @@ const createNewAddId = () => {
     addrId = !addrId ? 1 : (parseInt(addrId) + 1);
     localStorage.setItem('AddressBookID', addrId);
     return addrId;
+}
+
+const setTextValue = (id, value) => {
+    const element = document.querySelector(id); element.textContent = value;
+}
+const setValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.value = value;
+}
+
+const setSelectedIndex = (id, index) => {
+    const element = document.querySelector(id);
+    element.selectedIndex = index;  
+}
+
+
+const setForm = () => {
+    setValue('#name',AdderessObj.name);
+    setValue('#address',AdderessObj.address);
+    setValue('#city',AdderessObj.city);
+    setValue('#state',AdderessObj.state);
+    setValue('#phone',AdderessObj.phone);
+    setValue('#zipcode',AdderessObj.zipcode);
+}
+const checkForUpdate = () => {
+    const employeePayrollJSON = localStorage.getItem('editAddr');
+    isUpdate = employeePayrollJSON ? true : false;
+    if(!isUpdate) return;
+    AdderessObj = JSON.parse(employeePayrollJSON);
+    setForm();
 }

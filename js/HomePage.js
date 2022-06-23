@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     addrPayrollList =   getEmployeePayrollDataFromStorage();
     document.querySelector(".per-count").textContent = addrPayrollList.length;
     createInnerHtml();
+    localStorage.removeItem('editAddr');
 });
 
 getEmployeePayrollDataFromStorage= () => {
@@ -26,7 +27,7 @@ const createInnerHtml = () => {
                 <td>${addrPayrollData.zipcode}</td>
                 <td>
                     <img id="${addrPayrollData.id}" onclick="remove(this)" alt="delete" src="/assest/icons/delete-black-18dp.svg">
-                    <img id="1" alt="edit" onclick="update(this)" src="/assest/icons/create-black-18dp.svg">
+                    <img id="${addrPayrollData.id}" alt="edit" onclick="update(this)" src="/assest/icons/create-black-18dp.svg">
                 </td>
             </tr>
         `;
@@ -43,4 +44,12 @@ const remove = (node) => {
     localStorage.setItem('AddressBookList', JSON.stringify(addrPayrollList));
     document.querySelector('.per-count').textContent = addrPayrollList.length;
     createInnerHtml();
+}
+
+const update = (node) => {
+    let addrPayrollData = addrPayrollList.find(addData => addData.id == node.id)
+    if(!addrPayrollData) return;
+    localStorage.setItem('editAddr', JSON.stringify(addrPayrollData))
+    window.location.replace(site_properties.add_emp_Payroll_page);
+    
 }
