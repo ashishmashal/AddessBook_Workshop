@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.querySelector(".per-count").textContent = addrPayrollList.length;
     createInnerHtml();
 });
+
 getEmployeePayrollDataFromStorage= () => {
     return localStorage.getItem('AddressBookList') ? 
                     JSON.parse(localStorage.getItem('AddressBookList')) : [];
@@ -24,11 +25,22 @@ const createInnerHtml = () => {
                 <td>${addrPayrollData.phone}</td>
                 <td>${addrPayrollData.zipcode}</td>
                 <td>
-                    <img id="1" onclick="remove(this)" alt="delete" src="/assest/icons/delete-black-18dp.svg">
+                    <img id="${addrPayrollData.id}" onclick="remove(this)" alt="delete" src="/assest/icons/delete-black-18dp.svg">
                     <img id="1" alt="edit" onclick="update(this)" src="/assest/icons/create-black-18dp.svg">
                 </td>
             </tr>
         `;
     }
     document.querySelector('#display').innerHTML = innerHtml;
+}
+const remove = (node) => {
+    let addrPayrollData = addrPayrollList.find(addData => addData.id == node.id);
+   if(!addrPayrollData) return;
+    const index = addrPayrollList 
+                    .map(addData => addData.id)
+                    .indexOf(addrPayrollData.id);
+                    addrPayrollList.splice(index, 1);
+    localStorage.setItem('AddressBookList', JSON.stringify(addrPayrollList));
+    document.querySelector('.per-count').textContent = addrPayrollList.length;
+    createInnerHtml();
 }
