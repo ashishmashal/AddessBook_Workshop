@@ -15,16 +15,16 @@ class AddressBook{
         if(!nameRegex.test(name))
         throw "Name Is Incorrect!"
     }
-    get city() {
+    get City() {
         return this._city;
     }
-    set city(city) {
+    set City(city) {
         this._city = city;
     }
-    get state() {
+    get State() {
         return this._state;
     }
-    set state(state) {
+    set State(state) {
         this._state = state;
     }
     get PhoneNo() {
@@ -52,7 +52,7 @@ class AddressBook{
         throw "Zip Code Is Incorrect!";
     }
     toString() {
-            return "Id="+this.id + ", Name=" + this.name + ", Phone No=" + this.phone +
+            return "Id="+ this.id + ", Name=" + this.name + ", Phone No=" + this.phone +
             ", Address=" + this.address + ", Zip Code=" + this.zipcode +
             ", City=" + this.city + ", State=" +this.state;
     }
