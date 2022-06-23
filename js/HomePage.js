@@ -1,9 +1,13 @@
 let addrPayrollList
 window.addEventListener('DOMContentLoaded', (event) => {
-    
+    addrPayrollList =   getEmployeePayrollDataFromStorage();
+    document.querySelector(".per-count").textContent = addrPayrollList.length;
     createInnerHtml();
 });
-
+getEmployeePayrollDataFromStorage= () => {
+    return localStorage.getItem('AddressBookList') ? 
+                    JSON.parse(localStorage.getItem('AddressBookList')) : [];
+}
 
 const createInnerHtml = () => {
     if (addrPayrollList.length == 0) return;
@@ -13,12 +17,12 @@ const createInnerHtml = () => {
     for (const addrPayrollData of addrPayrollList) {
         innerHtml = `${innerHtml}
             <tr>
-                <td>Ashish Shivsharan Mashal</td>
-                <td>SB Road</td>
-                <td>Pune</td>
-                <td>Maharashtra</td>
-                <td>+91 8380805787</td>
-                <td>413 004</td>
+                <td>${addrPayrollData.name}</td>
+                <td>${addrPayrollData.address}</td>
+                <td>${addrPayrollData.city}</td>
+                <td>${addrPayrollData.state}</td>
+                <td>${addrPayrollData.phone}</td>
+                <td>${addrPayrollData.zipcode}</td>
                 <td>
                     <img id="1" onclick="remove(this)" alt="delete" src="/assest/icons/delete-black-18dp.svg">
                     <img id="1" alt="edit" onclick="update(this)" src="/assest/icons/create-black-18dp.svg">
