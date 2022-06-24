@@ -1,4 +1,5 @@
 let addrPayrollList
+
 window.addEventListener('DOMContentLoaded', (event) => {
     addrPayrollList =   getEmployeePayrollDataFromStorage();
     document.querySelector(".per-count").textContent = addrPayrollList.length;
@@ -47,9 +48,12 @@ const remove = (node) => {
 }
 
 const update = (node) => {
-    let addrPayrollData = addrPayrollList.find(addData => addData.id == node.id)
-    if(!addrPayrollData) return;
-    localStorage.setItem('editAddr', JSON.stringify(addrPayrollData))
+    let addrPayrollData = addrPayrollList.find(bookData => bookData.id == node.id);
+    if(!addrPayrollData)
+    { 
+        return;
+    }
+    localStorage.setItem('editAddr', JSON.stringify(addrPayrollData));
     window.location.replace(site_properties.add_emp_Payroll_page);
-    
+ 
 }
